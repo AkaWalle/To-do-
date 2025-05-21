@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Barra Lateral -->
+    <div class="sidebar">
+        <h2>Gerenciador</h2>
+        <ul class="sidebar-menu">
+            <li onclick="showModule('academia')"><span class="icon">🏋️</span> Academia</li>
+            <li onclick="showModule('programacao')"><span class="icon">💻</span> Programação</li>
+            <li onclick="showModule('comunicacao')"><span class="icon">📞</span> Comunicação</li>
+            <li onclick="showModule('lazer')"><span class="icon">🎮</span> Lazer</li>
+            <li onclick="toggleCalendar()"><span class="icon">📅</span> Calendário</li>
+        </ul>
+
+        <!-- Calendário na Barra Lateral -->
+        <div id="calendar" style="display: none;">
+            <div class="calendar-header">
+                <button onclick="changeMonth(-1)">◄</button>
+                <span id="month-year"></span>
+                <button onclick="changeMonth(1)">►</button>
+            </div>
+            <div class="calendar-grid">
+                <div class="day-header">DOM</div>
+                <div class="day-header">SEG</div>
+                <div class="day-header">TER</div>
+                <div class="day-header">QUA</div>
+                <div class="day-header">QUI</div>
+                <div class="day-header">SEX</div>
+                <div class="day-header">SAB</div>
+                <div id="calendar-days" class="calendar-days"></div>
+            </div>
+            <div id="events-list">
+                <h4>Eventos do Dia</h4>
+                <ul id="selected-day-events"></ul>
+            </div>
+            <button onclick="openReminderForm()" class="sidebar-button">Adicionar Lembrete</button>
+        </div>
+
+        <!-- Formulário de Lembrete (Modal) -->
+        <div id="reminder-form" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeReminderForm()">×</span>
+                <h3>Adicionar Lembrete</h3>
+                <input type="date" id="reminder-date">
+                <input type="text" id="reminder-text" placeholder="Digite um lembrete">
+                <select id="reminder-category">
+                    <option value="work">Trabalho</option>
+                    <option value="sports">Esportes</option>
+                    <option value="kids">Crianças</option>
+                    <option value="other">Outro</option>
+                </select>
+                <button onclick="addReminder()">Adicionar</button>
+            </div>
+        </div>
+
+        <!-- Formulário de Edição de Lembrete (Modal) -->
+        <div id="edit-reminder-form" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeEditReminderForm()">×</span>
+                <h3>Editar Lembrete</h3>
+                <input type="date" id="edit-reminder-date">
+                <input type="text" id="edit-reminder-text" placeholder="Digite um lembrete">
+                <select id="edit-reminder-category">
+                    <option value="work">Trabalho</option>
+                    <option value="sports">Esportes</option>
+                    <option value="kids">Crianças</option>
+                    <option value="other">Outro</option>
+                </select>
+                <button onclick="updateReminder()">Salvar</button>
+            </div>
+        </div>
+
+        <button onclick="toggleDarkMode()" class="sidebar-button">Modo Noturno</button>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <h1>Gerenciador de Tarefas</h1>
+
+        <!-- Notificações Visuais -->
+        <div id="notifications" class="notifications"></div>
+
+        <!-- Seção de Módulos -->
+        <div id="module-content">
+            <div id="programacao" class="module" style="display: none;">
+                <h2>Programação</h2>
+                <p>Desafio: Escreva uma função que inverta uma string.</p>
+                <div class="timer">
+                    <span id="timer-display">00:00</span>
+                    <button onclick="startTimer(300)">Iniciar Timer (5 min)</button>
+                    <button onclick="resetTimer()">Resetar</button>
+                </div>
+            </div>
+            <div id="academia" class="module" style="display: none;"><h2>Academia</h2><p>Adicione suas tarefas de academia aqui.</p></div>
+            <div id="comunicacao" class="module" style="display: none;"><h2>Comunicação</h2><p>Adicione suas tarefas de comunicação aqui.</p></div>
+            <div id="lazer" class="module" style="display: none;"><h2>Lazer</h2><p>Adicione suas tarefas de lazer aqui.</p></div>
+        </div>
+
+        <!-- Listas de Prioridades -->
+        <div id="priority-lists">
+            <h2>Listas de Prioridades</h2>
+            <div class="list">
+                <h3>Importante</h3>
+                <ul id="important-list"></ul>
+                <input type="text" id="important-task" placeholder="Nova tarefa importante">
+                <button onclick="addTask('important')">Adicionar</button>
+            </div>
+            <div class="list">
+                <h3>Meu Dia</h3>
+                <ul id="my-day-list"></ul>
+                <input type="text" id="my-day-task" placeholder="Nova tarefa para hoje">
+                <button onclick="addTask('my-day')">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

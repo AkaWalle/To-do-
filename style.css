@@ -1,0 +1,603 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-theme {
+    background-color: #fafafa;
+    color: #202124;
+}
+
+body.dark-theme {
+    background-color: #202124;
+    color: #e8eaed;
+}
+
+/* Tela de Login */
+.login-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+body.dark-theme .login-container {
+    background-color: #303134;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #202124;
+}
+
+body.dark-theme .login-container h2 {
+    color: #e8eaed;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+body.dark-theme .login-container input {
+    border-color: #5f6368;
+    background-color: #303134;
+    color: #e8eaed;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.login-container button:hover {
+    background-color: #3267d6;
+}
+
+.login-container p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.login-container a {
+    color: #4285f4;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #d93025;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.error-message.hidden {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Tela Principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Barra superior para adicionar notas */
+.note-input {
+    background-color: #fff;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 24px;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: box-shadow 0.2s, background-color 0.3s;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+body.dark-theme .note-input {
+    background-color: #303134;
+    border-color: #5f6368;
+}
+
+.note-input:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.note-input input[type="text"],
+.note-input input[type="number"],
+.note-input input[type="datetime-local"],
+.note-input select {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+    font-family: 'Roboto', sans-serif;
+    background: transparent;
+    color: inherit;
+}
+
+.note-input input[type="text"] {
+    flex-grow: 1;
+}
+
+.note-input input[type="number"],
+.note-input input[type="datetime-local"],
+.note-input select {
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+body.dark-theme .note-input input[type="number"],
+body.dark-theme .note-input input[type="datetime-local"],
+body.dark-theme .note-input select {
+    border-color: #5f6368;
+    background-color: #303134;
+    color: #e8eaed;
+}
+
+.note-input-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.note-input-actions button {
+    background: none;
+    border: none;
+    color: #5f6368;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+}
+
+body.dark-theme .note-input-actions button {
+    color: #bdc1c6;
+}
+
+.note-input-actions button:hover {
+    color: #202124;
+}
+
+body.dark-theme .note-input-actions button:hover {
+    color: #e8eaed;
+}
+
+.note-input-actions button.active {
+    color: #202124;
+}
+
+body.dark-theme .note-input-actions button.active {
+    color: #e8eaed;
+}
+
+/* Seletor de cores */
+.color-picker {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .color-picker {
+    background-color: #303134;
+}
+
+.color-picker.hidden {
+    display: none;
+}
+
+.color-option {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #dadce0;
+}
+
+body.dark-theme .color-option {
+    border-color: #5f6368;
+}
+
+.color-option:hover {
+    border: 2px solid #5f6368;
+}
+
+body.dark-theme .color-option:hover {
+    border-color: #e8eaed;
+}
+
+/* Filtros, pesquisa, ordenação e temas */
+.filtros {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filtros input[type="text"],
+.filtros select {
+    padding: 5px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 14px;
+    background: transparent;
+    color: inherit;
+}
+
+.filtros input[type="text"] {
+    flex-grow: 1;
+}
+
+body.dark-theme .filtros input[type="text"],
+body.dark-theme .filtros select {
+    border-color: #5f6368;
+    background-color: #303134;
+    color: #e8eaed;
+}
+
+.filtros label {
+    font-size: 14px;
+    color: #5f6368;
+}
+
+body.dark-theme .filtros label {
+    color: #bdc1c6;
+}
+
+.filtros button,
+.filtros .importar-label {
+    background: none;
+    border: none;
+    color: #5f6368;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+}
+
+body.dark-theme .filtros button,
+body.dark-theme .filtros .importar-label {
+    color: #bdc1c6;
+}
+
+.filtros button:hover,
+.filtros .importar-label:hover {
+    color: #202124;
+}
+
+body.dark-theme .filtros button:hover,
+body.dark-theme .filtros .importar-label:hover {
+    color: #e8eaed;
+}
+
+/* Estilo das seções */
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #5f6368;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+body.dark-theme .section h2 {
+    color: #bdc1c6;
+}
+
+/* Estilo da lista de tarefas */
+.lista-tarefas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.tarefa {
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s;
+    position: relative;
+    min-height: 120px;
+    cursor: move;
+}
+
+body.dark-theme .tarefa {
+    border-color: #5f6368;
+}
+
+.tarefa:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.tarefa.dragging {
+    opacity: 0.5;
+    background-color: inherit !important;
+}
+
+.tarefa input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.tarefa span {
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    color: #202124; /* Letras pretas em ambos os temas */
+}
+
+body.dark-theme .tarefa span {
+    color: #202124; /* Letras pretas no modo escuro */
+}
+
+.tarefa-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.tarefa:hover .tarefa-actions {
+    opacity: 1;
+}
+
+.tarefa-actions button {
+    background: none;
+    border: none;
+    color: #5f6368;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+body.dark-theme .tarefa-actions button {
+    color: #bdc1c6;
+}
+
+.tarefa-actions button:hover {
+    color: #d93025;
+}
+
+body.dark-theme .tarefa-actions button:hover {
+    color: #f28b82;
+}
+
+.concluida {
+    text-decoration: line-through;
+    color: #5f6368;
+}
+
+body.dark-theme .concluida {
+    color: #bdc1c6;
+}
+
+/* Estilo do timer, lembrete e prioridade */
+.timer,
+.lembrete,
+.prioridade {
+    font-size: 12px;
+    color: #5f6368;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+body.dark-theme .timer,
+body.dark-theme .lembrete,
+body.dark-theme .prioridade {
+    color: #bdc1c6;
+}
+
+.timer button {
+    background: none;
+    border: none;
+    color: #5f6368;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+body.dark-theme .timer button {
+    color: #bdc1c6;
+}
+
+.timer button:hover {
+    color: #202124;
+}
+
+body.dark-theme .timer button:hover {
+    color: #e8eaed;
+}
+
+.prioridade.alta { color: #d93025; }
+.prioridade.media { color: #fbbc04; }
+.prioridade.baixa { color: #5f6368; }
+
+body.dark-theme .prioridade.alta { color: #f28b82; }
+body.dark-theme .prioridade.media { color: #fbbc04; }
+body.dark-theme .prioridade.baixa { color: #bdc1c6; }
+
+/* Estilo do modo lista (subtarefas) */
+.subtarefas {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.subtarefa span {
+    color: #202124; /* Letras pretas em ambos os temas */
+}
+
+body.dark-theme .subtarefa span {
+    color: #202124; /* Letras pretas no modo escuro */
+}
+
+/* Estilo do modo de edição */
+.edit-mode {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.edit-mode input,
+.edit-mode textarea,
+.edit-mode select {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+}
+
+body.dark-theme .edit-mode input,
+body.dark-theme .edit-mode textarea,
+body.dark-theme .edit-mode select {
+    border-color: #5f6368;
+    background-color: #303134;
+    color: #e8eaed;
+}
+
+.edit-mode button {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    align-self: flex-end;
+}
+
+.edit-mode button:hover {
+    background-color: #3267d6;
+}
+
+/* Notificação personalizada */
+.notificacao {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #202124;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .notificacao {
+    background-color: #e8eaed;
+    color: #202124;
+}
+
+.notificacao.hidden {
+    display: none;
+}
+
+.notificacao button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+body.dark-theme .notificacao button {
+    color: #202124;
+}
+
+/* Cores para as notas adesivas (independente do tema) */
+.cor1 { background-color: #fff8b8 !important; } /* Amarelo claro */
+.cor2 { background-color: #f4b9c9 !important; } /* Rosa claro */
+.cor3 { background-color: #b3e5fc !important; } /* Azul claro */
+.cor4 { background-color: #c8e6c9 !important; } /* Verde claro */
+.cor5 { background-color: #f28b82 !important; } /* Vermelho claro */
+.cor6 { background-color: #fbbc04 !important; } /* Laranja */
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .note-input {
+        max-width: 100%;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .note-input input[type="text"],
+    .note-input input[type="datetime-local"],
+    .note-input select {
+        width: 100%;
+    }
+
+    .note-input input[type="number"] {
+        width: 100px;
+    }
+
+    .lista-tarefas {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .lista-tarefas {
+        grid-template-columns: 1fr;
+    }
+}
